@@ -1,6 +1,8 @@
-const express = require('express');
+import express from 'express';
+import config from 'config';
+
 const app = express();
-const PORT = 8080;
+const PORT = config.get('server').port;
 
 app.get('/', function (req, res) {
   res.send('Hello World!')

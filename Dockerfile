@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "build" ]
 
 # At the end, set the user to use when running this image
 USER node

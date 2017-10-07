@@ -3,11 +3,8 @@ services:
   postgres:
     image: postgres
     restart: always
-    ports:
-      - 5432:5432
-    environment:
-      - DB_USER=postgres
-      - DB_PASS=12345
+    expose:
+      - 5432
   web:
     # replace username/repo:tag with your name and image details
     image: bluemoon
@@ -16,7 +13,7 @@ services:
       - 80:8080
     depends_on:
       - postgres
-    command: ["./wait-for-postgress.sh", "postgres:5432", "--", "npm", "start"]
+    command: ["./wait-for-postgress.sh", "postgres:5432", "--", "npm", "run", "start:dev"]
   adminer:
     image: adminer
     restart: always

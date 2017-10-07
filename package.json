@@ -2,10 +2,10 @@
   "name": "bluemoon",
   "version": "1.0.0",
   "description": "node based cms",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server-core/server.js"
+    "build": "rm -rf dist && babel src/server-core -d dist/server-core",
+    "start:dev": "cross-env NODE_ENV=dev node dist/server-core/server.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
     "mocha": "^3.5.3"
   },
   "dependencies": {
-    "pg": "^7.3.0",
-    "express": "4.16"
+    "cross-env": "^5.0.5",
+    "express": "4.16",
+    "pg": "^7.3.0"
   }
 }

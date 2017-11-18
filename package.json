@@ -4,8 +4,13 @@
   "description": "node based cms",
   "main": "index.mjs",
   "scripts": {
-    "build": "rm -rf dist && babel src/server-core -d dist/server-core",
-    "start:dev": "cross-env NODE_ENV=dev node dist/server-core/server.js"
+    "build": "npm run build:db && npm run build:server",
+    "build:server": "babel src/server-core -d build/server-core",
+    "build:db": "babel src/db-core -d build/db-core",
+    "start": "cross-env NODE_ENV=dev node build/server-core/server.js",
+    "start:local": "cross-env NODE_ENV=local node build/server-core/server.js",
+    "test": "cross-env NODE_ENV=test mocha",
+    "test:watch": "cross-env NODE_ENV=test mocha --watch"
   },
   "repository": {
     "type": "git",
@@ -24,15 +29,22 @@
   },
   "homepage": "https://github.com/stephencranedesign/bluemoon#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "chai": "^4.1.2",
-    "config": "^1.26.2",
-    "mocha": "^3.5.3"
+    "chance": "^1.0.12",
+    "config": "^1.27.0",
+    "mocha": "^3.5.3",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.1.2"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.26.0",
     "cross-env": "^5.0.5",
     "express": "4.16",
-    "pg": "^7.3.0"
+    "express-promise-router": "^2.0.0",
+    "pg": "^7.3.0",
+    "sql": "^0.78.0"
   }
 }

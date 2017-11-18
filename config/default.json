@@ -1,6 +1,6 @@
 {
   "db": {
-    "password": 12345,
+    "password": "example",
     "port": 5432
   },
   "server": {

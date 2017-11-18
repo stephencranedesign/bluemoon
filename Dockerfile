@@ -10,13 +10,17 @@ COPY wait-for-postgress.sh /wait-for-postgress.sh
 # For npm@5 or later, copy package-lock.json as well
 COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm config set registry http://registry.npmjs.org/ && npm install
 
 # Bundle app source
 COPY . .
 
+RUN rm -f build
+RUN mkdir build
+RUN chmod 777 /usr/src/app/build
+RUN npm run build
+
 EXPOSE 80
-CMD [ "npm", "run", "build" ]
 
 # At the end, set the user to use when running this image
 USER node

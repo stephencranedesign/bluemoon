@@ -1,7 +1,7 @@
 {
   "db": {
     "user": "postgres",
-    "host": "db",
+    "host": "...",
     "database": "bluemoon"
   }
 }

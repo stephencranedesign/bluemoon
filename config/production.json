@@ -1,0 +1,7 @@
+{
+  "db": {
+    "user": "postgres",
+    "host": "...",
+    "database": "bluemoon"
+  }
+}

@@ -1,0 +1,25 @@
+{
+	"presets": {
+	  "env": {
+	    "production": {
+	      "presets": [
+	        [
+	          "env",{
+	            "modules": false,
+	            "targets": ["ie >= 10"]
+	          }
+	        ]
+	      ],
+	      "comments": false
+	    },
+	    "test": {
+	      "presets": [
+	        [
+	          "env",{"targets": {"node": "current"}}
+	        ]
+	      ]
+	    }
+	  }
+	},
+	"plugins": ["transform-runtime"]
+}

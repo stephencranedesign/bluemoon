@@ -1,0 +1,9 @@
+{
+  "db": {
+    "password": "example",
+    "port": 5432
+  },
+  "server": {
+    "port": 8080
+  }
+}

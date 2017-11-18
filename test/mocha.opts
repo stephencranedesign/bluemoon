@@ -1,3 +1,0 @@
-src/**/*.js
---recursive
---compilers js:babel-core/register

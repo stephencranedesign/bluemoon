@@ -4,9 +4,7 @@
   "description": "node based cms",
   "main": "index.mjs",
   "scripts": {
-    "build": "npm run build:db && npm run build:server",
-    "build:server": "babel src/server-core -d build/server-core",
-    "build:db": "babel src/db-core -d build/db-core",
+    "build": "webpack",
     "start": "cross-env NODE_ENV=dev node build/server-core/server.js",
     "start:local": "cross-env NODE_ENV=local node build/server-core/server.js",
     "test": "cross-env NODE_ENV=test mocha",

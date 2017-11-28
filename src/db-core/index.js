@@ -1,7 +1,7 @@
-import query from './query';
+import {query} from './query';
 import pages from './pages';
 
-export default {
+export {
 	query,
 	pages
 };

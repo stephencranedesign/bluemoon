@@ -1,0 +1,1 @@
+export const withNoCallThru = (...base) => Object.assign(base, {'@noCallThru': true});

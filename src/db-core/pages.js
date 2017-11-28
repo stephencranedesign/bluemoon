@@ -1,10 +1,10 @@
-import query from './query';
+import {query} from './query';
 
 const TABLE = 'pages';
 
 // page services..
-const getById = async (id) => {};
+const getById = async (id) => await query(`SELECT * FROM ${TABLE} WHERE pageId=${id}`);
 
-export default {
+export {
 	getById
 };

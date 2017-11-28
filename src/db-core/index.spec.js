@@ -1,22 +1,23 @@
 import proxyquire from 'proxyquire';
 import {expect} from 'chai';
+import {withNoCallThru} from '../../test/utils';
 
 const MODULE_PATH = './index';
-
-const withNoCallThru = (...base) => Object.assign({'@noCallThru': true}, base);
 
 describe('Feature: db-core entry file', () => {
 	it('Scenario: exported api', () => {
 		const querySymbol = Symbol('query');
 		const pagesSymbol = Symbol('pages');
 
-		const query = withNoCallThru(querySymbol);
+		const query = querySymbol;
 		const pages = withNoCallThru(pagesSymbol);
 
 		const dbCore = proxyquire(MODULE_PATH, {
-			'./query': query,
+			'./query': {
+				query
+			},
 			'./pages': pages
-		}).default;
+		});
 
 		const expectedExports = {
 			query,

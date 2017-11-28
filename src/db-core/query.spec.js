@@ -35,14 +35,14 @@ describe('Feature: Query', () => {
 			.withArgs(sql, [])
 			.returns(promise);
 
-		const query = proxyquire(MODULE_PATH, {
+		const {query} = proxyquire(MODULE_PATH, {
 			'config': {
 				get
 			},
 			'pg': {
 				Pool
 			}
-		}).default;
+		});
 
 		const result = query(sql);
 
@@ -77,14 +77,14 @@ describe('Feature: Query', () => {
 			.withArgs(sql, params)
 			.returns(promise);
 
-		const query = proxyquire(MODULE_PATH, {
+		const {query} = proxyquire(MODULE_PATH, {
 			'config': {
 				get
 			},
 			'pg': {
 				Pool
 			}
-		}).default;
+		});
 
 		const result = query(sql, params);
 

@@ -1,5 +1,4 @@
 import proxyquire from 'proxyquire';
-import createStubInstanceon from 'sinon';
 import {expect} from 'chai';
 import sinon from 'sinon';
 
@@ -7,7 +6,7 @@ const MODULE_PATH = './query';
 
 class PoolMock {
 	query() {}
-};
+}
 
 describe('Feature: Query', () => {
 	it('Scenario: called with sql and no params', () => {

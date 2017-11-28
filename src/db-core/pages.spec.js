@@ -2,14 +2,13 @@ import proxyquire from 'proxyquire';
 import {expect} from 'chai';
 import sinon from 'sinon';
 import Chance from 'chance';
-import {withNoCallThru} from '../../test/utils';
 
 const MODULE_PATH = './pages';
 const chance = new Chance();
 
 describe('Feature: DB-Core Pages', () => {
 	it('Scenario: getById', async () => {
-		const pageId = chance.guid()
+		const pageId = chance.guid();
 		const page = Symbol('page');
 
 		const expectedQuery = `SELECT * FROM pages WHERE pageId=${pageId}`;

@@ -10,16 +10,17 @@
 	          }
 	        ]
 	      ],
-	      "comments": false
+	      "comments": false,
+	      "plugins": ["transform-runtime"]
 	    },
 	    "test": {
 	      "presets": [
 	        [
 	          "env",{"targets": {"node": "current"}}
 	        ]
-	      ]
+	      ],
+	      "plugins": ["istanbul"]
 	    }
 	  }
-	},
-	"plugins": ["transform-runtime"]
+	}
 }

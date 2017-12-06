@@ -2,7 +2,7 @@ import proxyquire from 'proxyquire';
 import {expect} from 'chai';
 import sinon from 'sinon';
 
-const MODULE_PATH = './query';
+const MODULE_PATH = '../query';
 
 class PoolMock {
 	query() {}

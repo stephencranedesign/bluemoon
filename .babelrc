@@ -11,15 +11,21 @@
 	        ]
 	      ],
 	      "comments": false,
-	      "plugins": ["transform-runtime"]
+	      "plugins": [
+	      	"transform-runtime",
+	      	["transform-object-rest-spread", { "useBuiltIns": true }]
+	      ]
 	    },
-	    "test": {
+	    "dev": {
 	      "presets": [
 	        [
 	          "env",{"targets": {"node": "current"}}
 	        ]
 	      ],
-	      "plugins": ["istanbul"]
+	      "plugins": [
+	      	"istanbul",
+	      	["transform-object-rest-spread", { "useBuiltIns": true }]
+	      ]
 	    }
 	  }
 	}

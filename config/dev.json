@@ -3,5 +3,8 @@
     "user": "postgres",
     "host": "db",
     "database": "bluemoon"
+  },
+  "server": {
+    "port": 9999
   }
 }

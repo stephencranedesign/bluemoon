@@ -1,5 +1,5 @@
 import {query} from './query';
-import pages from './pages';
+import pages from './services/pages';
 
 export {
 	query,

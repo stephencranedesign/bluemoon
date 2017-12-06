@@ -1,8 +1,8 @@
-import {query} from '../../../db-core/index';
+import {pages} from '../../services';
 
 const getById = async (req, res) => {
 	const pageId = req.params.query.pageId;
-	const data = await query(`SELECT * FROM pages WHERE id = ${pageId}`);
+	const data = await pages.getById(pageId);
 
 	res.json(data);
 };

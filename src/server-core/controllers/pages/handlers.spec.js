@@ -24,15 +24,18 @@ describe('Feature: Page Controller Handlers', () => {
 			json: sinon.spy()
 		};
 
-		const query = sinon.stub().returns(Symbol('expected a SQL query'));
+		const pages = sinon.stub().returns(Symbol('expected args(pageId)'));
 
-		query
-			.withArgs(`SELECT * FROM pages WHERE id = ${pageId}`)
+		pages
+			.withArgs(pageId)
 			.returns(data);
 
 		const {getById} = proxyquire(MODULE_PATH, {
-			'../../../db-core/index': {
-				query
+			'../../services': {
+				pages: {
+					getById: pages
+				},
+				query: () => {}
 			}
 		});
 

@@ -2,11 +2,12 @@ import proxyquire from 'proxyquire';
 import {expect} from 'chai';
 import sinon from 'sinon';
 import Chance from 'chance';
+import {withNoCallThru} from '../../../test/utils';
 
 const MODULE_PATH = './pages';
 const chance = new Chance();
 
-describe('Feature: DB-Core Pages', () => {
+describe('Feature: DB-Core Pages Service', () => {
 	it('Scenario: getById', async () => {
 		const pageId = chance.guid();
 		const page = Symbol('page');
@@ -20,13 +21,32 @@ describe('Feature: DB-Core Pages', () => {
 			.returns(Promise.resolve(page));
 
 		const {getById} = proxyquire(MODULE_PATH, {
-			'./query': {
-				query
+			'../': {
+				query: withNoCallThru(query)
 			}
-		});
+		}).default;
 
 		const result = await getById(pageId);
 
 		expect(result).to.deep.equal(page);
+	});
+
+	it('Scenario: getById fails', async () => {
+		const pageId = chance.guid();
+		const error = Symbol('error');
+
+		const query = sinon.stub().returns(Promise.reject(error));		
+
+		const {getById} = proxyquire(MODULE_PATH, {
+			'../': {
+				query: withNoCallThru(query)
+			}
+		}).default;
+
+		try {
+			const result = await getById(pageId);
+		} catch(err) {
+			expect(err).to.deep.equal(error);
+		}
 	});
 });
